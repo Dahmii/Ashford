@@ -231,7 +231,7 @@ section {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-#preloader {
+/* #preloader {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -271,7 +271,7 @@ section {
     left: calc(50% - 36px);
     opacity: 0;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -828,7 +828,7 @@ section {
 --------------------------------------------------------------*/
 .call-to-action {
   background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)),
-    url("../img/cta-bg.jpg") center center;
+    url("../img/trucks/ashford8.jpg") center center;
   background-size: cover;
   padding: 100px 0;
 }
@@ -1746,14 +1746,26 @@ section {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 50vh;
+  min-height: 100vh;
   background-color: var(--color-secondary);
-  background-image: url("../img/hero-bg1.jpg");
+  background-image: url("../img/trucks/ashford7.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
   padding: 120px 0 0 0;
   color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: -1;
 }
 
 .hero h2 {
