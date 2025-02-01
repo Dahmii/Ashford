@@ -828,7 +828,7 @@ section {
 --------------------------------------------------------------*/
 .call-to-action {
   background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)),
-    url("../img/trucks/ashford8.jpg") center center;
+    url("../img/cta.jpg") center center;
   background-size: cover;
   padding: 100px 0;
 }
@@ -1244,6 +1244,57 @@ section {
 /*--------------------------------------------------------------
 # Our Team Section
 --------------------------------------------------------------*/
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+.team .section-header {
+  margin-bottom: 40px;
+}
+
+.team .section-header span,
+.team .section-header h2 {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.team .section-header p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Group Image Styling */
+.team-group {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.team-group img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Team Members Grid */
+.team .row {
+  display: flex;
+  justify-content: center;
+  /* gap: 20px; */
+  flex-wrap: wrap;
+}
+.team-card {
+  justify-content: center;
+}
+
 .team .member {
   text-align: center;
   background: #fff;
@@ -1251,15 +1302,12 @@ section {
   padding: 15px;
   overflow: hidden;
   box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+  width: 250px;
 }
 
 .team .member img {
+  width: 100%;
   border-radius: 10px;
-  overflow: hidden;
-}
-
-.team .member .member-content {
-  padding: 0 20px 30px 20px;
 }
 
 .team .member h4 {
@@ -1274,44 +1322,18 @@ section {
   display: block;
   font-size: 14px;
   color: #6c757d;
-  margin-bottom: 0;
 }
 
-.team .member p {
-  padding-top: 10px;
-  font-size: 14px;
-  font-style: italic;
-  color: #6c757d;
-}
+@media (max-width: 768px) {
+  .team .row {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.team .member .social {
-  margin-top: 15px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.team .member .social a {
-  color: #a2a2a2;
-  transition: 0.3s;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #bbbbbb;
-}
-
-.team .member .social a:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.team .member .social i {
-  font-size: 18px;
-  margin: 0 2px;
+  .team .member {
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1747,16 +1769,26 @@ section {
 .hero {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-secondary);
-  background-image: url("../img/trucks/ashford7.jpg");
-  background-size: cover;
-  background-position: center;
   position: relative;
-  padding: 120px 0 0 0;
+  overflow: hidden; /* Ensures video stays within the section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgba(255, 255, 255, 0.8);
-  z-index: 1;
 }
 
+/* Video Background */
+#hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video covers the entire section */
+  z-index: -2; /* Sends video behind all content */
+}
+
+/* Dark overlay to enhance text visibility */
 .hero::before {
   content: "";
   position: absolute;
@@ -1768,9 +1800,14 @@ section {
   z-index: -1;
 }
 
+.hero .container {
+  position: relative; /* Ensures content stays above the video */
+  z-index: 1;
+  text-align: left;
+}
+
 .hero h2 {
   margin-bottom: 20px;
-  padding: 0;
   font-size: 48px;
   font-weight: 700;
   color: #fff;
@@ -1788,21 +1825,20 @@ section {
   margin-bottom: 40px;
 }
 
+/* Form Styles */
 .hero form {
   background: #fff;
   padding: 10px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .hero form .form-control {
-  padding-top: 18px;
-  padding-bottom: 18px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 18px 20px;
   border: none;
+  background: none;
   margin-right: 10px;
-  border: none !important;
-  background: none !important;
 }
 
 .hero form .form-control:hover,
@@ -1820,6 +1856,7 @@ section {
   background-color: #2756ff;
 }
 
+/* Stats Section */
 .hero .stats-item {
   padding: 30px;
   width: 100%;
@@ -1827,17 +1864,16 @@ section {
 
 .hero .stats-item span {
   font-size: 32px;
-  display: block;
   font-weight: 700;
   margin-bottom: 15px;
   padding-bottom: 15px;
   position: relative;
+  display: block;
 }
 
 .hero .stats-item span:after {
   content: "";
   position: absolute;
-  display: block;
   width: 20px;
   height: 3px;
   background: var(--color-primary);
@@ -1848,9 +1884,6 @@ section {
 }
 
 .hero .stats-item p {
-  padding: 0;
-  margin: 0;
-  font-family: var(--font-primary);
   font-size: 15px;
   font-weight: 600;
 }
